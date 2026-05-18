@@ -20,6 +20,7 @@ function App() {
     }
   };
 
+  
   const addTodo = async () => {
     handleCharactersError(todo);
 
