@@ -26,7 +26,7 @@ function App() {
     handleCharactersError(todo);
 
     try {
-      await axios.post('sql-taskapp-shehzana01.database.windows.net/create', {
+      await axios.post('https://app-taskapp-backend-shehzana.azurewebsites.net/create', {
         todo,
       });
     } catch (err) {
@@ -37,7 +37,7 @@ function App() {
   const getAllTodos = async () => {
     try {
       await axios
-        .get('sql-taskapp-shehzana01.database.windows.net/')
+        .get('https://app-taskapp-backend-shehzana.azurewebsites.net/')
         .then((response) => {
           setTodoList(response.data);
         });
@@ -51,7 +51,7 @@ function App() {
 
     try {
       await axios
-        .put(`sql-taskapp-shehzana01.database.windows.netupdate/${id}`, {
+        .put(`https://app-taskapp-backend-shehzana.azurewebsites.net/update/${id}`, {
           id,
           todo: newTodo,
         })
@@ -71,7 +71,7 @@ function App() {
   const deleteTodo = async (id) => {
     try {
       await axios
-        .delete(`sql-taskapp-shehzana01.database.windows.net/${id}`)
+        .delete(`https://app-taskapp-backend-shehzana.azurewebsites.net/${id}`)
         .then((response) => {
           setTodoList(todoList.filter((val) => val.id !== id));
         });
