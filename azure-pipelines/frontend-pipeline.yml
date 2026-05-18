@@ -1,0 +1,40 @@
+trigger:
+  branches:
+    include:
+      - main
+      - develop
+  paths:
+    include:
+      - client/**
+
+variables:
+  - group: taskapp-variables
+  - name: imageTag
+    value: $(Build.BuildId)
+
+stages:
+  - stage: Build
+    displayName: Build Frontend
+    jobs:
+      - job: BuildJob
+        pool:
+          vmImage: ubuntu-latest
+        steps:
+          - checkout: self
+
+          - task: NodeTool@0
+            inputs:
+              versionSpec: '18.x'
+            displayName: Install Node.js
+
+          - script: |
+              cd client
+              npm install
+              CI=false npm run build
+            displayName: Build React App
+
+          - task: PublishBuildArtifacts@1
+            inputs:
+              PathtoPublish: client/build
+              ArtifactName: frontend-build
+              publishLocation: Container
