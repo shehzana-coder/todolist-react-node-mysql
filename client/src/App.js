@@ -26,7 +26,7 @@ function App() {
     handleCharactersError(todo);
 
     try {
-      await axios.post('https://todo-mysql-backend.herokuapp.com/create', {
+      await axios.post('sql-taskapp-shehzana01.database.windows.net/create', {
         todo,
       });
     } catch (err) {
@@ -37,7 +37,7 @@ function App() {
   const getAllTodos = async () => {
     try {
       await axios
-        .get('https://todo-mysql-backend.herokuapp.com/')
+        .get('sql-taskapp-shehzana01.database.windows.net/')
         .then((response) => {
           setTodoList(response.data);
         });
@@ -51,7 +51,7 @@ function App() {
 
     try {
       await axios
-        .put(`https://todo-mysql-backend.herokuapp.com/update/${id}`, {
+        .put(`sql-taskapp-shehzana01.database.windows.netupdate/${id}`, {
           id,
           todo: newTodo,
         })
@@ -71,7 +71,7 @@ function App() {
   const deleteTodo = async (id) => {
     try {
       await axios
-        .delete(`https://todo-mysql-backend.herokuapp.com/${id}`)
+        .delete(`sql-taskapp-shehzana01.database.windows.net/${id}`)
         .then((response) => {
           setTodoList(todoList.filter((val) => val.id !== id));
         });
