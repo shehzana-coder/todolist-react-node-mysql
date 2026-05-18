@@ -10,6 +10,7 @@ function App() {
   const [todoList, setTodoList] = useState([]);
   const [newTodo, setNewTodo] = useState('');
 
+  
   const handleCharactersError = (value) => {
     if (value.length < 3 || value.length > 50) {
       throw new Error(
